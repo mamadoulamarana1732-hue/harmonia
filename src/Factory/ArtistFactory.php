@@ -37,9 +37,10 @@ final class ArtistFactory extends PersistentObjectFactory
     #[\Override]
     protected function defaults(): array|callable
     {
+        $array=["GUINEE", "FRANCE", "ESPAGNE", "ANGLETERRE", "HOLLANDE", "USA"];
         return [
             'biography' => self::faker()->word(),
-            'countryOrigin' => self::faker()->word(),
+            'countryOrigin' => self::faker()->randomElement($array),
             'createdAt' => \DateTimeImmutable::createFromMutable(self::faker()->dateTime()),
             'name' => self::faker()->word(),
         ];
