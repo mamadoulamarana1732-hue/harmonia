@@ -2,17 +2,17 @@
 
 namespace App\Factory;
 
-use App\Entity\Type;
-use App\Repository\TypeRepository;
+use App\Entity\History;
+use App\Repository\HistoryRepository;
 use Doctrine\ORM\EntityRepository;
 use Zenstruck\Foundry\Persistence\PersistentObjectFactory;
 use Zenstruck\Foundry\Persistence\Proxy;
 use Zenstruck\Foundry\Persistence\ProxyRepositoryDecorator;
 
 /**
- * @extends PersistentObjectFactory<Type>
+ * @extends PersistentObjectFactory<History>
  */
-final class TypeFactory extends PersistentObjectFactory
+final class HistoryFactory extends PersistentObjectFactory
 {
     /**
      * @see https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#factories-as-services
@@ -26,7 +26,7 @@ final class TypeFactory extends PersistentObjectFactory
     #[\Override]
     public static function class(): string
     {
-        return Type::class;
+        return History::class;
     }
 
     /**
@@ -38,9 +38,11 @@ final class TypeFactory extends PersistentObjectFactory
     protected function defaults(): array|callable
     {
         return [
-            'color' => self::faker()->randomElement(['bleu', 'vert', 'violet', 'orange']),
-            'created' => \DateTimeImmutable::createFromMutable(self::faker()->dateTime()),
-            'name' => self::faker()->word(),
+            'createdAt' => \DateTimeImmutable::createFromMutable(self::faker()->dateTime()),
+            'datehour' => self::faker()->dateTime(),
+            'nbercount' => self::faker()->randomNumber(),
+            'son' => SonFactory::random(),
+            'user' => UserFactory::random(),
         ];
     }
 
@@ -51,7 +53,7 @@ final class TypeFactory extends PersistentObjectFactory
     protected function initialize(): static
     {
         return $this
-            // ->afterInstantiate(function(Type $type): void {})
+            // ->afterInstantiate(function(History $history): void {})
         ;
     }
 }

@@ -2,17 +2,17 @@
 
 namespace App\Factory;
 
-use App\Entity\Type;
-use App\Repository\TypeRepository;
+use App\Entity\Playlist;
+use App\Repository\PlaylistRepository;
 use Doctrine\ORM\EntityRepository;
 use Zenstruck\Foundry\Persistence\PersistentObjectFactory;
 use Zenstruck\Foundry\Persistence\Proxy;
 use Zenstruck\Foundry\Persistence\ProxyRepositoryDecorator;
 
 /**
- * @extends PersistentObjectFactory<Type>
+ * @extends PersistentObjectFactory<Playlist>
  */
-final class TypeFactory extends PersistentObjectFactory
+final class PlaylistFactory extends PersistentObjectFactory
 {
     /**
      * @see https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#factories-as-services
@@ -26,7 +26,7 @@ final class TypeFactory extends PersistentObjectFactory
     #[\Override]
     public static function class(): string
     {
-        return Type::class;
+        return Playlist::class;
     }
 
     /**
@@ -38,9 +38,12 @@ final class TypeFactory extends PersistentObjectFactory
     protected function defaults(): array|callable
     {
         return [
-            'color' => self::faker()->randomElement(['bleu', 'vert', 'violet', 'orange']),
-            'created' => \DateTimeImmutable::createFromMutable(self::faker()->dateTime()),
-            'name' => self::faker()->word(),
+            'createdAt' => \DateTimeImmutable::createFromMutable(self::faker()->dateTime()),
+            'dateC' => self::faker()->dateTime(),
+            'ispublic' => self::faker()->boolean(['1', '0']),
+            'description' =>self::faker()->sentence(),
+            'name' => self::faker()->text(255),
+            'user' => UserFactory::random(),
         ];
     }
 
@@ -51,7 +54,7 @@ final class TypeFactory extends PersistentObjectFactory
     protected function initialize(): static
     {
         return $this
-            // ->afterInstantiate(function(Type $type): void {})
+            // ->afterInstantiate(function(Playlist $playlist): void {})
         ;
     }
 }

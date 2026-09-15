@@ -8,6 +8,9 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use App\Factory\TypeFactory;
 use App\Factory\ArtistFactory;
+use App\Factory\HistoryFactory;
+use App\Factory\PlaylistFactory;
+use App\Factory\SonFactory;
 use App\Factory\UserFactory;
 
 class AppFixtures extends Fixture
@@ -42,9 +45,15 @@ class AppFixtures extends Fixture
         AlbumFactory::createOne([
             'cover' => "Image de l'artiste",
             'title' => "Enfant du Pays",
-            'type' => "1",
+            'type' => 'EP',
         ]);
         AlbumFactory::createMany(100);
+
+        PlaylistFactory::createMany(100);
+
+        SonFactory::createMany(100);
+
+        HistoryFactory::createMany(100);
 
         
 
