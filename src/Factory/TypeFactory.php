@@ -38,7 +38,7 @@ final class TypeFactory extends PersistentObjectFactory
     protected function defaults(): array|callable
     {
         return [
-            'color' => self::faker()->word(),
+            'color' => self::faker()->randomElement(['bleu', 'vert', 'violet', 'orange']),
             'created' => \DateTimeImmutable::createFromMutable(self::faker()->dateTime()),
             'name' => self::faker()->word(),
         ];

@@ -2,17 +2,17 @@
 
 namespace App\Factory;
 
-use App\Entity\Album;
-use App\Repository\AlbumRepository;
+use App\Entity\History;
+use App\Repository\HistoryRepository;
 use Doctrine\ORM\EntityRepository;
 use Zenstruck\Foundry\Persistence\PersistentObjectFactory;
 use Zenstruck\Foundry\Persistence\Proxy;
 use Zenstruck\Foundry\Persistence\ProxyRepositoryDecorator;
 
 /**
- * @extends PersistentObjectFactory<Album>
+ * @extends PersistentObjectFactory<History>
  */
-final class AlbumFactory extends PersistentObjectFactory
+final class HistoryFactory extends PersistentObjectFactory
 {
     /**
      * @see https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#factories-as-services
@@ -26,7 +26,7 @@ final class AlbumFactory extends PersistentObjectFactory
     #[\Override]
     public static function class(): string
     {
-        return Album::class;
+        return History::class;
     }
 
     /**
@@ -36,16 +36,13 @@ final class AlbumFactory extends PersistentObjectFactory
      */
     #[\Override]
     protected function defaults(): array|callable
-    {       
-        $array = ["1.png", "2.png", "3.png", "4.png", "5.png", "6.png", "7.png", "8.png", "9.png", "10.png"];
+    {
         return [
-            'cover' => self::faker()->text(255),
             'createdAt' => \DateTimeImmutable::createFromMutable(self::faker()->dateTime()),
-            'releaseAt' => \DateTimeImmutable::createFromMutable(self::faker()->dateTime()),
-            'title' => self::faker()->text(255),
-            'imagePath' =>"uploads/" .self::faker()->randomElement($array),
-            'type' => self::faker()->randomElement(["EP", "SINGLE"]),
-            'artist'=>ArtistFactory::random(),
+            'datehour' => self::faker()->dateTime(),
+            'nbercount' => self::faker()->randomNumber(),
+            'son' => SonFactory::random(),
+            'user' => UserFactory::random(),
         ];
     }
 
@@ -56,7 +53,7 @@ final class AlbumFactory extends PersistentObjectFactory
     protected function initialize(): static
     {
         return $this
-            // ->afterInstantiate(function(Album $album): void {})
+            // ->afterInstantiate(function(History $history): void {})
         ;
     }
 }

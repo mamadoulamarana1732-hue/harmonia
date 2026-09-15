@@ -2,17 +2,17 @@
 
 namespace App\Factory;
 
-use App\Entity\Album;
-use App\Repository\AlbumRepository;
+use App\Entity\Son;
+use App\Repository\SonRepository;
 use Doctrine\ORM\EntityRepository;
 use Zenstruck\Foundry\Persistence\PersistentObjectFactory;
 use Zenstruck\Foundry\Persistence\Proxy;
 use Zenstruck\Foundry\Persistence\ProxyRepositoryDecorator;
 
 /**
- * @extends PersistentObjectFactory<Album>
+ * @extends PersistentObjectFactory<Son>
  */
-final class AlbumFactory extends PersistentObjectFactory
+final class SonFactory extends PersistentObjectFactory
 {
     /**
      * @see https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#factories-as-services
@@ -26,7 +26,7 @@ final class AlbumFactory extends PersistentObjectFactory
     #[\Override]
     public static function class(): string
     {
-        return Album::class;
+        return Son::class;
     }
 
     /**
@@ -36,16 +36,14 @@ final class AlbumFactory extends PersistentObjectFactory
      */
     #[\Override]
     protected function defaults(): array|callable
-    {       
-        $array = ["1.png", "2.png", "3.png", "4.png", "5.png", "6.png", "7.png", "8.png", "9.png", "10.png"];
+    {
         return [
-            'cover' => self::faker()->text(255),
+            'counter' => self::faker()->randomNumber(),
             'createdAt' => \DateTimeImmutable::createFromMutable(self::faker()->dateTime()),
-            'releaseAt' => \DateTimeImmutable::createFromMutable(self::faker()->dateTime()),
-            'title' => self::faker()->text(255),
-            'imagePath' =>"uploads/" .self::faker()->randomElement($array),
-            'type' => self::faker()->randomElement(["EP", "SINGLE"]),
-            'artist'=>ArtistFactory::random(),
+            'duration' => self::faker()->dateTime(),
+            'isExplicite' => self::faker()->boolean(['1', '0']),
+            'title' => self::faker()->word(),
+            'tracknumber' => self::faker()->text(255),
         ];
     }
 
@@ -56,7 +54,7 @@ final class AlbumFactory extends PersistentObjectFactory
     protected function initialize(): static
     {
         return $this
-            // ->afterInstantiate(function(Album $album): void {})
+            // ->afterInstantiate(function(Son $son): void {})
         ;
     }
 }
