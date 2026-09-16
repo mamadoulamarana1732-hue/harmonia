@@ -44,7 +44,7 @@ final class AlbumFactory extends PersistentObjectFactory
             'releaseAt' => \DateTimeImmutable::createFromMutable(self::faker()->dateTime()),
             'title' => self::faker()->text(255),
             'imagePath' =>"uploads/" .self::faker()->randomElement($array),
-            'type' => self::faker()->randomElement(["EP", "SINGLE"]),
+            'type' => self::faker()->randomElement(["EP", "SINGLE","ALBUM"]),
             'artist'=>ArtistFactory::random(),
         ];
     }

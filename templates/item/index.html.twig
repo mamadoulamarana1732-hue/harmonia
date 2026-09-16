@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Item {% endblock %}
+
+{% block body %}
+
+
+    <div class="row">
+    
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <img src="{{ asset(album.imagePath) }}" class="card-img-lef">
+                    <div class="card-body">
+                        <p class="card-text">Titre de l'album : {{ album.title }}</p>
+                        <p class="card-text">Type de l'album : {{ album.type }}</p>
+                        <p class="card-text">Artiste : {{ album.artist.name }}</p>
+                        <p class="card-text">Date de sortie : {{ album.releaseAt|date('d/m/Y') }}</p>
+                        <p class="card-text">Pays d'origine : {{ album.artist.countryOrigin }}</p>
+                        {# <p class="card-text">titre du Son : {{ son.albumsId }}</p> #}
+                        <a href="" class="btn btn-primary mt-auto">Voir les Muiques</a>
+                    </div>
+                </div>
+
+    </div>
+
+{% endblock %}

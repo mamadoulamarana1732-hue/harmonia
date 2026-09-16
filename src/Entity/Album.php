@@ -38,6 +38,17 @@ class Album
     #[ORM\Column(length: 255)]
     private ?string $imagePath = null;
 
+    /**
+     * @var Collection<int, Son>
+     */
+    #[ORM\OneToMany(targetEntity: Son::class, mappedBy: 'albums')]
+    private Collection $sons;
+
+    public function __construct()
+    {
+        $this->sons = new ArrayCollection();
+    }
+
 
     public function getId(): ?int
     {
@@ -124,6 +135,36 @@ class Album
     public function setImagePath(string $imagePath): static
     {
         $this->imagePath = $imagePath;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Son>
+     */
+    public function getSons(): Collection
+    {
+        return $this->sons;
+    }
+
+    public function addSon(Son $son): static
+    {
+        if (!$this->sons->contains($son)) {
+            $this->sons->add($son);
+            $son->setAlbums($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSon(Son $son): static
+    {
+        if ($this->sons->removeElement($son)) {
+            // set the owning side to null (unless already changed)
+            if ($son->getAlbums() === $this) {
+                $son->setAlbums(null);
+            }
+        }
 
         return $this;
     }

@@ -37,7 +37,7 @@ class AppFixtures extends Fixture
         UserFactory::createOne([
             'email' =>"mamadou@gmail.com",
             'pseudo'=>"RAMADHANE",
-            'password' =>"**********",
+            'password' =>"rougui",
             'roles' => ["ROLES_ADMIN"],
         ]);
         UserFactory::createMany(100);
@@ -47,7 +47,7 @@ class AppFixtures extends Fixture
             'title' => "Enfant du Pays",
             'type' => 'EP',
         ]);
-        AlbumFactory::createMany(100);
+        AlbumFactory::createMany(50);
 
         PlaylistFactory::createMany(100);
 
