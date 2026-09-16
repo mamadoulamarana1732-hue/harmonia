@@ -52,6 +52,9 @@ class Son
     #[ORM\ManyToMany(targetEntity: Type::class, inversedBy: 'sons')]
     private Collection $types;
 
+    #[ORM\ManyToOne(inversedBy: 'sons')]
+    private ?Album $albums = null;
+
     public function __construct()
     {
         $this->histories = new ArrayCollection();
@@ -211,6 +214,18 @@ class Son
     public function removeType(Type $type): static
     {
         $this->types->removeElement($type);
+
+        return $this;
+    }
+
+    public function getAlbums(): ?Album
+    {
+        return $this->albums;
+    }
+
+    public function setAlbums(?Album $albums): static
+    {
+        $this->albums = $albums;
 
         return $this;
     }

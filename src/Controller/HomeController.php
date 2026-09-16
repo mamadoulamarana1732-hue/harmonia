@@ -14,8 +14,12 @@ final class HomeController extends AbstractController
     {
         $albumEntities = $albumRepository->findAll();
 
+        $user = $this->getUser();
+       // dump($user);
+
         return $this->render('home/index.html.twig', [
-            'albumEntities' => $albumEntities,
+           'albumEntities' => $albumEntities,
+          
         ]);
     }
 }
