@@ -29,24 +29,31 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{{ path('app_album') }}">Album</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{path('app_artist')}}">Artiste</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{path('app_profil')}}">Profil</a>
-        </li>
-        {% if app.user %}
-        <li class="nav-item">
-          <a class="nav-link" href="{{path('app_logout')}}">Se Deconnecter</a>
-        </li>
-        {% else %}
-        <li class="nav-item">
-          <a class="nav-link" href="{{path('app_login')}}">login</a>
-        </li>
-        {% endif %}
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{{ path('app_album') }}">Album</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{path('app_artist')}}">Artiste</a>
+              </li>
+                  {% if app.user %}
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{path('app_profil')}}">PlayList</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{path('app_favorite')}}">Favorie</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{path('app_logout')}}">Déconnexion</a>
+                  </li>
+                  {% else %}
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{path('app_login')}}">login</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{path('app_register')}}">créer un compte</a>
+                </li>
+
+                {% endif %}
 
       </ul>
     </div>

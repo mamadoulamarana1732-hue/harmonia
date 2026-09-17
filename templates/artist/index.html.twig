@@ -4,21 +4,27 @@
 
 {% block body %}
         <h2>la liste des artistes</h2>
-        <a href="{{ path('app_artist_create') }}">Ajouter un Artiste</a>
-        <table class="table table-bordered">
-        <Tr>
-        <th>NOM</th>
-        <th>BiOGRAPHIE</th>
-        <th>PAYS</th>
-        <th>MODIFIER</th>
-        </Tr>
-        {% for artist in artistesEntities %}
-         <TR>
-            <TD>{{artist.name}}</TD>
-             <TD>{{artist.biography}}</TD>
-            <TD>{{artist.countryOrigin}}</TD>
-             <TD><a href="{{ path('app_artist_edit', {'id': artist.id}) }}">Édité</a></TD>
-        </TR>
-        {% endfor %}
-        </table>
+        <form action="" class="float-end ">
+        <input type="text" placeholder=" Réchercher par nom de l'artiste">
+        </form>
+
+        <a href="{{ path('app_artist_create') }}" class="btn btn-primary mt-auto">Ajouter Un Artiste</a>
+
+         <div class="row">
+                      {% for artist in artistesEntities %}
+                        <div class="col-md-3 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                   <p class="card-text"><strong>N° :</strong> {{loop.index}}</p>
+                                    <p class="card-text"><strong>Nom :</strong> {{artist.name}}</p>
+                                    <p class="card-text"><strong>Biograhie :</strong> {{artist.biography}}</p>
+                                    <p class="card-text"><strong>Pays :</strong> {{artist.countryOrigin}}</p>
+                                    <a href="{{ path('app_artist_edit', {'id': artist.id}) }}" class="btn btn-primary mt-auto">Editer</a>
+                                     <a href="{{ path('app_artist_delete', {'id': artist.id}) }}" class="btn btn-primary mt-auto">Supprimer</a>
+                    
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
 {% endblock %}

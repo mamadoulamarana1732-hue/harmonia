@@ -12,7 +12,7 @@
                 <div class="card h-100">
                     <img src="{{ asset(album.imagePath) }}" class="card-img-top">
                     <div class="card-body">
-                        <p class="card-text">ID : {{ album.id }}</p>
+                        <p class="card-text"><strong>Numéro :</strong> {{ loop.index }}</p>
                         <p class="card-text"><strong>Titre de l'album :</strong> {{ album.title }}</p>
                         <p class="card-text"><strong>Artiste :</strong> {{ album.artist.name }}</p>
                         <a href="{{path('app_item', {'id' : album.id })}}" class="btn btn-primary mt-auto">Voir l'album</a>

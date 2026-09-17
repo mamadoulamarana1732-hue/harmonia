@@ -7,7 +7,7 @@
     {% if app.user %}
                         <h3>la liste de ma playliste:</h3>
 
-                    <div class="row">
+               <div class="row">
                     {% for playlist in app.user.playlists %}
                         <div class="col-md-3 mb-4">
                             <div class="card h-100">
@@ -15,14 +15,12 @@
                                     <p class="card-text"><strong>Nom de la playlist :</strong> {{ playlist.name }}</p>
                                     <p class="card-text"><strong>Date de sortie :</strong> {{ playlist.dateC|date('d/m/Y') }}</p>
                                     <p class="card-text"><strong>Descritpion :</strong> {{ playlist.description }}</p>
+                                    <a href="" class="btn btn-primary mt-auto">Play</a>
                     
                                 </div>
                             </div>
                         </div>
                     {% endfor %}
                 </div>
-      {% else %}
-        <a href="{{path('app_register')}}">créer un compte utilisateur</a>
-        <a href="{{path('app_login')}}">Se Connècter</a>
     {% endif %}
 {% endblock %}
