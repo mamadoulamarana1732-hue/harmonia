@@ -17,7 +17,7 @@
                         <p class="card-text">Date de sortie : {{ album.releaseAt|date('d/m/Y') }}</p>
                         <p class="card-text">Pays d'origine : {{ album.artist.countryOrigin }}</p>
                         {# <p class="card-text">titre du Son : {{ son.albumsId }}</p> #}
-                        <a href="" class="btn btn-primary mt-auto">Voir les Muiques</a>
+                         <a href="{{ path('app_son_create', {'albumid': album.id}) }}" class="btn btn-primary mt-auto">Ajouter Une Musique</a>
                     </div>
                 </div>
 

@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ArtistController!{% endblock %}
+
+{% block body %}
+        <h2>la liste des artistes</h2>
+        <a href="{{ path('app_artist_create') }}">Ajouter un Artiste</a>
+        <table class="table table-bordered">
+        <Tr>
+        <th>NOM</th>
+        <th>BiOGRAPHIE</th>
+        <th>PAYS</th>
+        <th>MODIFIER</th>
+        </Tr>
+        {% for artist in artistesEntities %}
+         <TR>
+            <TD>{{artist.name}}</TD>
+             <TD>{{artist.biography}}</TD>
+            <TD>{{artist.countryOrigin}}</TD>
+             <TD><a href="{{ path('app_artist_edit', {'id': artist.id}) }}">Édité</a></TD>
+        </TR>
+        {% endfor %}
+        </table>
+{% endblock %}
