@@ -44,6 +44,8 @@ final class SonFactory extends PersistentObjectFactory
             'isExplicite' => self::faker()->boolean(['1', '0']),
             'title' => self::faker()->word(),
             'tracknumber' => self::faker()->text(255),
+            'albums'=>AlbumFactory::random(),
+
         ];
     }
 

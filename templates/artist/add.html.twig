@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ToolController!{% endblock %}
+
+{% block body %}
+<h2>Ajouter un artist</h2>
+    {{form_start(form)}}
+        {{form_row(form.name)}}
+        {{form_row(form.biography)}}
+        {{form_row(form.countryOrigin)}}
+
+
+        <button type="submit"> Valider </button>
+
+    {{form_end(form)}}
+{% endblock %}

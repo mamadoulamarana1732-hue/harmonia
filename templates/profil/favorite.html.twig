@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProfilController!{% endblock %}
+
+{% block body %}
+
+    {% if app.user %}
+                        <h3>Mes Musiques favories:</h3>
+
+                    <div class="row">
+                    {% for history in app.user.histories %}
+                        <div class="col-md-3 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <p class="card-text"><strong>Date :</strong> {{ history.datehour|date('d/m/Y') }}</p>
+                                    <p class="card-text"><strong>Musique:</strong> {{ history.son.title}}</p>
+                                    <p class="card-text"><strong>Track:</strong> {{ history.son.tracknumber}}</p>
+                                    <p class="card-text"><strong>Nbre d'écoute:</strong> {{ history.son.counter}}</p>
+                                    <a href="" class="btn btn-primary mt-auto">Play</a>
+                    
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+      {% else %}
+        <a href="{{path('app_register')}}">créer un compte utilisateur</a>
+        <a href="{{path('app_login')}}">Se Connècter</a>
+    {% endif %}
+{% endblock %}

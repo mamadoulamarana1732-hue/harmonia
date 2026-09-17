@@ -27,16 +27,15 @@ final class AlbumController extends AbstractController
         public function item($id, AlbumRepository $albumRepository, SonRepository $sonRepository): Response
         {
             $album = $albumRepository->find($id);
-
+           
             if ($album === null) {
                 return $this->redirectToRoute('app_home');
             }
 
-        //    $sons = $sonRepository->findBy(['album' => $album]); // à revoir par jule le matin
 
             return $this->render('item/index.html.twig', [
                 'album' => $album,
-                // 'son'  => $sons,   // A revoir apr jule demain
+               // A revoir apr jule demain
             ]);
         }
 }
