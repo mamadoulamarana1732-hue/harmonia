@@ -21,12 +21,6 @@ class SonType extends AbstractType
             ->add('tracknumber')
             ->add('counter')
             ->add('isExplicite')
-            // ->add('albums', EntityType::class, [
-            //     'class' => Album::class,
-            //     'choice_label' => '',
-            //     'multiple' =>true,
-            //     'expanded' => true
-            // ])
         ;
     }
 

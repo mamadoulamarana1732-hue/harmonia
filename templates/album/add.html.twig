@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ToolController!{% endblock %}
+
+{% block body %}
+<h2>Ajouter un album</h2>
+    {{form_start(form)}}
+
+        {{form_row(form.title)}}
+        {{form_row(form.releaseAt)}}
+        {{form_row(form.cover)}}
+        {{form_row(form.type)}}
+        {# {{form_row(form.imagePath)}} #}
+        <img src="{{ asset('uploads/' ~ form_row(form.imagePath)) }}">
+        {# {{form_row(form.artist)}} #}
+        <button type="submit"> Valider </button>
+
+    {{form_end(form)}}
+{% endblock %}
