@@ -23,6 +23,7 @@ final class SonController extends AbstractController
         $son->setAlbums($album);
         $form = $this->createForm(SonType::class, $son);
         $form->handleRequest($request);
+        
             if($form->isSubmitted() && $form->isValid()){
             $son->setCreatedAt(new \DateTimeImmutable());
             $entityManager->persist($son);
