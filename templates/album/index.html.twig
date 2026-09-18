@@ -5,23 +5,8 @@
 {% block body %}
 
     <h2>Les albums</h2>
-
-
     <div class="row">
         {% for al in albumtype %}
-            {# <div class="col-md-3 mb-4">
-                <div class="card h-100">
-                    <img src="{{ asset(al.imagePath) }}" class="card-img-top">
-                    <div class="card-body">
-                        <p class="card-text">Titre de l'album : {{ al.title }}</p>
-                        <p class="card-text">Type de l'album : {{ al.type }}</p>
-                        <p class="card-text">Artiste : {{ al.artist.name }}</p>
-                        <p class="card-text">Date de sortie : {{ al.releaseAt|date('d/m/Y') }}</p>
-                        <p class="card-text">Pays d'origine : {{ al.artist.countryOrigin }}</p>
-                        <a href="{{path('app_item', {'id' : al.id })}}" class="btn btn-primary mt-auto">Voir l'album</a>
-                    </div>
-                </div>
-            </div> #}
             {% include 'components/album-card.html.twig' with {al:al}%}
         {% endfor %}
     </div>
@@ -31,19 +16,6 @@
 
     <div class="row">
         {% for s in singletype %}
-            {# <div class="col-md-3 mb-4">
-                <div class="card h-100">
-                    <img src="{{ asset(s.imagePath) }}" class="card-img-top">
-                    <div class="card-body">
-                        <p class="card-text">Titre de l'album : {{ s.title }}</p>
-                        <p class="card-text">Type de l'album : {{ s.type }}</p>
-                        <p class="card-text">Artiste : {{ s.artist.name }}</p>
-                        <p class="card-text">Date de sortie : {{ s.releaseAt|date('d/m/Y') }}</p>
-                        <p class="card-text">Pays d'origine : {{ s.artist.countryOrigin }}</p>
-                        <a href="{{path('app_item', {'id' : s.id })}}" class="btn btn-primary mt-auto">Voir l'album</a>
-                    </div>
-                </div>
-            </div> #}
              {% include 'components/album-card.html.twig' with {al:s}%}
         {% endfor %}
     </div>
@@ -53,19 +25,6 @@
 
     <div class="row">
         {% for ep in eptype %}
-            {# <div class="col-md-3 mb-4">
-                <div class="card h-100">
-                    <img src="{{ asset(ep.imagePath) }}" class="card-img-top">
-                    <div class="card-body">
-                        <p class="card-text">Titre de l'album : {{ ep.title }}</p>
-                        <p class="card-text">Type de l'album : {{ ep.type }}</p>
-                        <p class="card-text">Artiste : {{ ep.artist.name }}</p>
-                        <p class="card-text">Date de sortie : {{ ep.releaseAt|date('d/m/Y') }}</p>
-                        <p class="card-text">Pays d'origine : {{ ep.artist.countryOrigin }}</p>
-                        <a href="{{path('app_item', {'id' : ep.id })}}" class="btn btn-primary mt-auto">Voir l'album</a>
-                    </div>
-                </div>
-            </div> #}
              {% include 'components/album-card.html.twig' with {al:ep}%}
         {% endfor %}
     </div>

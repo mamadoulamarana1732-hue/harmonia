@@ -23,14 +23,13 @@ final class SonController extends AbstractController
         $son->setAlbums($album);
         $form = $this->createForm(SonType::class, $son);
         $form->handleRequest($request);
+            if($form->isSubmitted() && $form->isValid()){
+            $son->setCreatedAt(new \DateTimeImmutable());
+            $entityManager->persist($son);
+            $entityManager->flush();
 
-        if($form->isSubmitted() && $form->isValid()){
-        $son->setCreatedAt(new \DateTimeImmutable());
-        $entityManager->persist($son);
-        $entityManager->flush();
-
-        return $this->redirectToRoute('app_home');
-    }
+            return $this->redirectToRoute('app_item', ['id'=>$albumid]);
+        }
         return $this->render('son/add.html.twig', [
            'formSon' =>$form->createView(), 
         ]);

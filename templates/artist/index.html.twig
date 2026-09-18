@@ -21,6 +21,7 @@
                                     <p class="card-text"><strong>Pays :</strong> {{artist.countryOrigin}}</p>
                                     <a href="{{ path('app_artist_edit', {'id': artist.id}) }}" class="btn btn-primary mt-auto">Editer</a>
                                      <a href="{{ path('app_artist_delete', {'id': artist.id}) }}" class="btn btn-primary mt-auto">Supprimer</a>
+                                     <a href="{{ path('app_album_create', {'id': artist.id}) }}" class="btn btn-primary mt-auto">Ajouter un album</a>
                     
                                 </div>
                             </div>

@@ -63,14 +63,14 @@ final class ArtistController extends AbstractController
         }
 
 
-       #[Route('/artist-delete/{id}', name: 'app_artist_delete')]
-public function delete(Artist $artist, EntityManagerInterface $entityManager): Response
-{
-    $entityManager->remove($artist);
-    $entityManager->flush();
+            #[Route('/artist-delete/{id}', name: 'app_artist_delete')]
+        public function delete(Artist $artist, EntityManagerInterface $entityManager): Response
+        {
+            $entityManager->remove($artist);
+            $entityManager->flush();
 
-    return $this->redirectToRoute('app_artist');
-}
+            return $this->redirectToRoute('app_artist');
+        }
 
 
 
